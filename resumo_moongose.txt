@@ -1,0 +1,15 @@
+Mongoose é uma biblioteca Node.js que proporciona uma camada de modelagem de dados sobre o MongoDB, um banco de dados NoSQL orientado a documentos. O Mongoose simplifica a interação com o MongoDB, oferecendo uma estrutura baseada em esquema para modelar os dados, validação, consultas e outras operações.
+
+Principais características do Mongoose:
+
+1. **Modelagem de Dados:** Permite definir esquemas para os dados, oferecendo uma estrutura consistente para a interação com o MongoDB.
+
+2. **Validação:** Oferece recursos de validação de dados antes de serem persistidos no banco, garantindo a integridade dos dados.
+
+3. **Middleware:** Permite a definição de funções de middleware para execução de lógica antes ou depois de eventos específicos, como salvar ou validar dados.
+
+4. **Consultas:** Facilita a realização de consultas ao MongoDB usando métodos simplificados, tornando mais fácil interagir com o banco de dados.
+
+5. **População de Documentos:** Possibilita a referência e população de documentos de diferentes coleções, tornando mais fácil lidar com relacionamentos.
+
+Em resumo, o Mongoose é uma ferramenta essencial para desenvolvedores que utilizam Node.js e desejam interagir com o MongoDB de uma maneira mais estruturada e eficiente. Ele simplifica o processo de modelagem, validação e consulta de dados no MongoDB, tornando o desenvolvimento de aplicações mais suave e organizado.

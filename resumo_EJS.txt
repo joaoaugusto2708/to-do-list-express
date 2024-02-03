@@ -1,0 +1,143 @@
+EJS e Configuração com Express
+Introdução
+
+Olá, programador! Seja bem-vindo à aula sobre EJS e Configuração com Express. Nesta aula, vamos entender o que é o EJS e como ele pode ser utilizado para criar páginas web dinâmicas utilizando o framework Express.
+
+O EJS é uma ferramenta muito poderosa que permite embutir códigos JavaScript em arquivos HTML para renderizar páginas web de forma dinâmica. Isso significa que, com o EJS, podemos criar páginas que exibem conteúdos diferentes para cada usuário, de acordo com as variáveis que passamos do back-end.
+
+Vamos aprender na prática como configurar e utilizar o EJS no Express para:
+
+    Criar páginas dinâmicas
+    Passar variáveis do back-end para o front-end
+    Utilizar templates e organização de código
+    E muito mais!
+
+Portanto, prepare-se para dominar mais essa skill fundamental para qualquer desenvolvedor web que utilize JavaScript no back-end. Vamos começar!
+O que é uma página dinâmica
+
+Antes de entrarmos nos detalhes do EJS, é importante entendermos a diferença entre uma página HTML estática e uma página dinâmica.
+
+Uma página HTML estática é aquela que possui um conteúdo fixo, que nunca se altera. Ou seja, o mesmo arquivo HTML é servido de forma idêntica para todos os usuários, em todas as situações.
+
+Já uma página dinâmica é gerada no momento em que o usuário faz uma requisição. Ou seja, o conteúdo dessa página pode mudar dependendo de certas variáveis e situações, como:
+
+    Dados do usuário logado (nome, email, etc)
+    Conteúdos buscados no banco de dados
+    Parâmetros passados na URL
+    E muito mais
+
+Dessa forma, cada usuário pode receber uma página com conteúdo diferente, personalizado especificamente para ele. Isso traz uma experiência muito mais rica e interativa na web.
+
+As páginas dinâmicas são processadas no servidor, normalmente utilizando algum interpretador ou linguagem como PHP, ASP, JSP ou Node.js.
+
+E é justamente nessa parte que o EJS entra. Com ele, podemos criar templates HTML dinâmicos do lado do servidor utilizando o poder do JavaScript.
+O que é EJS
+
+EJS significa Embedded JavaScript. Ele é uma linguagem de modelagem ou template engine para o Node.js que nos permite gerar marcação HTML com JavaScript do lado do servidor.
+
+Em outras palavras, o EJS permite escrever códigos JavaScript diretamente dentro de arquivos HTML. Dessa forma, podemos incorporar variáveis JavaScript, funções, estruturas de controle como if, else, foreach e muito mais dentro dos templates HTML.
+
+Isso traz toda a potência e dinamismo do JavaScript para a renderização de templates no servidor Node.js.
+
+Alguns benefícios do EJS:
+
+    Código HTML mais limpo e fácil de entender
+    Podemos reaproveitar partes do código (header, footer, etc)
+    Manipular dados antes de renderizar a página
+    Páginas web dinâmicas e interativas
+    Integra perfeitamente com Express e Node.js
+
+Em resumo, o EJS facilita muito a geração de páginas HTML a partir de dados dinâmicos, direto no servidor Node.js.
+Configurando EJS no Express
+
+Agora que entendemos o que é o EJS e para que ele serve, vamos aprender como configurá-lo em uma aplicação Express.
+
+Primeiro, vamos iniciar um projeto Node.js com Express:
+
+npm initnpm install express
+
+Depois, instale o EJS como dependência do projeto:
+
+npm install ejs
+
+Em seguida, devemos configurar o Express para usar o EJS como engine de views (templates).
+
+Isso é feito pelo método app.set(), passando a opção view engine com o valor ejs:
+
+// index.jsconst express = require('express') const app = express()app.set('view engine', 'ejs')app.listen(3000)
+
+Agora, toda view renderizada pelo Express será processada primeiro pelo EJS antes de ser enviada ao navegador.
+
+Por padrão, o Express vai procurar por arquivos EJS dentro do diretório ./views, portanto vamos criar essa pasta e nosso primeiro template:
+
+mkdir viewstouch views/index.ejs
+
+Dentro de index.ejs podemos começar a escrever HTML normalmente, mas agora com a capacidade de inserir JavaScript quando quisermos:
+
+<!-- views/index.ejs --><html>  <head>    <title>Meu site com EJS</title>  </head>  <body>    <h1>Bem-vindo ao meu site!</h1>    <p>Meu nome é <%= nome %></p>    <% if(logado) { %>      <p>Usuário logado!</p>     <% } %>  </body></html>
+
+Perceba no exemplo acima que inserimos variáveis e estruturas de controle JavaScript direto no HTML. Isso é a mágica do EJS!
+
+Agora precisamos renderizar essa view nas rotas do Express:
+
+// index.jsapp.get('/', (req, res) => {  const nome = "João"  const logado = true  res.render('index', {    nome,    logado      })})
+
+Pronto! Agora quando acessarmos a rota raiz, o Express vai renderizar o template index.ejs, substituir as variáveis por seus valores e retornar o HTML final para o navegador.
+
+Perceba que além da view, também passamos um objeto com as variáveis que queremos disponibilizar dentro do template EJS. Essas variáveis podem vir do banco de dados, de uma API externa, input de usuário ou qualquer outra origem.
+
+O EJS é responsável por processar o template + variáveis e retornar o HTML final, com todo o dinamismo que precisamos.
+Praticando EJS
+
+Agora que você já sabe o básico sobre EJS e como configurá-lo no Express, é hora de praticar e começar a criar templates mais complexos.
+
+Vou te dar algumas ideias de templates EJS para você treinar:
+1. Página de perfil
+
+Crie um template EJS que renderiza os dados de um usuário logado.
+
+Mostre seu nome, email, foto, biografia, número de posts e outras informações relevantes.
+
+Use variáveis para trocar os dados e estruturas de controle como if/else para checar se existe foto do perfil.
+2. Blog com posts
+
+Crie um template EJS que renderiza posts de blog.
+
+Faça um loop com forEach para renderizar um article.html para cada post, passando titulo, conteúdo e data como variáveis.
+
+Insira um link no final para carregar mais posts com AJAX.
+3. Carrinho de compras
+
+Crie um template EJS que mostra os produtos no carrinho de compra.
+
+Use variáveis para inserir o nome, preço e imagem de cada produto.
+
+Mostre o valor total do carrinho e insira botões para aumentar/diminuir a quantidade com JavaScript.
+4. Tabela de dados
+
+Crie um template EJS que renderiza uma tabela com dados vindos do banco.
+
+Use forEach para renderizar cada linha, passando os dados por variáveis.
+
+Insira inputs para ordenar e filtrar os resultados sem recarregar a página.
+
+Como você pode ver, as possibilidades são infinitas! Comece com templates simples e vá aumentando o nível aos poucos.
+
+Lembre-se sempre de reaproveitar partes comuns do site em arquivos separados, para manter o código limpo e organizado.
+
+Boa sorte nos estudos!
+Considerações Finais
+
+EJS é uma ferramenta poderosíssima para qualquer desenvolvedor Node.js que deseja criar templates HTML dinâmicos no back-end JavaScript.
+
+Vimos nessa aula o básico sobre o que é EJS, como ele funciona e como configurá-lo em uma aplicação Express para começar a criar páginas web dinâmicas.
+
+Você viu na prática exemplos de templates EJS, com variáveis sendo inseridas e estruturas de controle para manipular a view. Também aprendeu a renderizar esses templates a partir das rotas do Express, passando dados dinâmicos para dentro das views.
+
+Agora é sua vez de colocar a mão na massa! Comece criando templates EJS simples e vá evoluindo aos poucos eles até criar views super dinâmicas e interativas.
+
+Lembre-se sempre de manter o código bem organizado, reaproveitando templates e separando bem as responsabilidades.
+
+Espero que você tenha gostado dessa aula introdutória. Logo trarei mais conteúdos para te ajudar a evoluir cada vez mais com Express, EJS e outras tecnologias sensacionais do mundo JavaScript.
+
+Um grande abraço e bons estudos!

@@ -4,11 +4,17 @@
   "description": "Lista de Tarefas",
   "main": "app.js",
   "scripts": {
+    "dev": "npx nodemon",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "João Augusto",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.18.2"
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "method-override": "^3.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.3"
   }
 }
